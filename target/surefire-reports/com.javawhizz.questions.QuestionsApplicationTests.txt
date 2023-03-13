@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.javawhizz.questions.QuestionsApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.528 s - in com.javawhizz.questions.QuestionsApplicationTests
