@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stack Overflow questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Search for Java questions posted on Stackoverflow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <form class="mt-2" method="get" th:action="@{/questions}" action="#">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="tag" class="col-form-label">Tag</label>
+                </div>
+                <div class="col-auto">
+                    <input name="tag" id="tag" type="text" class="form-control" aria-describedby="passwordHelpInline">
+                </div>
+                <div class="col-auto">
+                    <label for="fromDate" class="col-form-label">From Date</label>
+                </div>
+                <div class="col-auto">
+                    <input name="fromDate" id="fromDate" type="date"  class="form-control" aria-describedby="passwordHelpInline">
+
+                </div>
+                <div class="col-auto">
+                    <label for="toDate" class="col-form-label">To Date</label>
+                </div>
+                <div class="col-auto">
+                    <input name="toDate" type="date" id="toDate" class="form-control" aria-describedby="passwordHelpInline">
+
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="card mb-3 mt-2" th:each="quiz: ${question}">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${quiz.title}"></h5>
+                <p class="card-text">Score: <b th:text="${quiz.score}"></b></p>
+                <p class="card-text"><small class="text-muted"> Is question Answered: <b th:text="${quiz.isAnswered()}"></b></small></p>
+                <a class="btn btn-primary" th:href="@{${quiz.link}}" target="_blank">View question on Stackoverflow</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
